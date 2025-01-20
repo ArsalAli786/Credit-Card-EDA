@@ -1,106 +1,82 @@
-# 🩺 Heart Disease Data Analysis  
+# Credit Card Fraud Detection - Exploratory Data Analysis (EDA) 💳🔍
 
-## Overview  
-This project involves analyzing a heart disease dataset to uncover patterns, trends, and insights into factors contributing to heart disease. The analysis explores key health metrics such as cholesterol levels, resting blood pressure, chest pain types, and exercise-induced angina, comparing patients with and without heart disease while also assessing its severity.
-
----
-
-## Dataset  
-**Source**: [Heart Disease Dataset](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data)  
-
-The dataset includes the following columns:  
-- **id**: Unique ID for each patient  
-- **age**: Age of the patient in years  
-- **origin**: Place of study  
-- **sex**: Gender (Male/Female)  
-- **cp**: Chest pain type (typical angina, atypical angina, non-anginal pain, asymptomatic)  
-- **trestbps**: Resting blood pressure (in mm Hg)  
-- **chol**: Serum cholesterol in mg/dl  
-- **fbs**: Fasting blood sugar > 120 mg/dl (True/False)  
-- **restecg**: Resting electrocardiographic results (normal, ST-T abnormality, left ventricular hypertrophy)  
-- **thalach**: Maximum heart rate achieved  
-- **exang**: Exercise-induced angina (True/False)  
-- **oldpeak**: ST depression induced by exercise relative to rest  
-- **slope**: Slope of the peak exercise ST segment  
-- **ca**: Number of major vessels (0-3) colored by fluoroscopy  
-- **thal**: Thalassemia (normal, fixed defect, reversible defect)  
-- **num**: Target variable (0 = no heart disease, 1-4 = presence/severity of heart disease)  
+## Overview
+This project focuses on **Exploratory Data Analysis (EDA)** of a credit card fraud detection dataset. The dataset contains **284,807 transactions** and 31 features, where the target variable (`Class`) indicates whether a transaction is **legitimate (0)** or **fraudulent (1)**. The goal of this analysis is to understand the data, uncover insights, and prepare for machine learning models.
 
 ---
 
-## What I Did  
-1. **Data Exploration**:  
-   - Analyzed the target variable (`num`) for the presence and severity of heart disease.  
-   - Checked for outliers in `chol` (cholesterol) and `trestbps` (resting blood pressure).  
+## Key Steps
+### 1. **Data Understanding**
+- Dataset: `credit card.csv` with 31 columns including:
+  - **Features**: `Time`, `V1-V28` (anonymized), `Amount`.
+  - **Target**: `Class` (0 = Legitimate, 1 = Fraudulent).
+- Total rows: 284,807  
+- Class Imbalance: Fraudulent transactions account for only **0.17%**.
 
-2. **Cholesterol Comparison**:  
-   - Compared average cholesterol levels between patients with and without heart disease.  
-   - Used boxplots and Interquartile Range (IQR) to detect and visualize outliers.  
+### 2. **EDA Steps**
+- **Data Cleaning**: Checked and confirmed no missing or null values.
+- **Statistical Analysis**: Summarized key statistics like mean, median, and standard deviation for numerical features.
+- **Visualizations**:
+  - **Countplot**: Distribution of fraudulent vs legitimate transactions.
+  - **Histogram**: Distribution of transaction amounts.
+  - **Heatmap**: Correlation between numerical features.
 
-3. **Distribution Analysis**:  
-   - Visualized age and gender distribution of patients.  
-   - Analyzed chest pain types to identify the most common ones.  
-
----
-
-## Tools & Libraries  
-- **Python**: Core programming language for analysis  
-- **Pandas**: For data manipulation and exploration  
-- **Matplotlib & Seaborn**: For data visualization (e.g., boxplots, histograms)  
-- **Jupyter Notebook**: Interactive environment for data analysis  
-
----
-
-## Key Findings  
-- Patients with heart disease exhibited unexpectedly lower average cholesterol levels, potentially due to medication or other influencing factors.  
-- Outliers were present in cholesterol and resting blood pressure, emphasizing the need for further investigation or cleaning.  
-- The age and gender distributions revealed interesting demographic trends in the dataset.  
+### 3. **Key Findings**
+- Significant **class imbalance**: Fraudulent transactions are very rare.
+- **Transaction Amount Distribution**: Highly skewed with a few large outliers.
+- **Correlation Insights**: Weak correlations between features and the target variable.
 
 ---
 
-## Visualizations  
-Key plots generated during the analysis include:  
-- **Boxplots**: Highlighted outliers in cholesterol and resting blood pressure.  
-- **Histograms**: Showed age distribution among patients.  
-- **Bar Charts**: Summarized chest pain type counts.  
+## Tools & Libraries
+- **Python**: Programming language.
+- **Pandas**: For data manipulation.
+- **Matplotlib** & **Seaborn**: For creating visualizations.
+- **Jupyter Notebook**: For interactive analysis.
 
 ---
 
-## How to Use  
-1. Clone the repository:  
+## Visualizations
+### Countplot
+Comparison of legitimate vs fraudulent transactions.  
+Example code:
+```python
+import seaborn as sns
+sns.countplot(x='Class', data=df, palette=['blue', 'red'])
+```
+
+### Correlation Heatmap
+Visualizing relationships between features:
+```python
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+```
+
+---
+
+## How to Run
+1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/heart-disease-analysis.git
-   ```  
-2. Install the required Python libraries:  
+   git clone https://github.com/ArsalAli786/credit-card-fraud-eda.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd credit-card-fraud-eda
+   ```
+3. Install required libraries:
    ```bash
    pip install pandas matplotlib seaborn
-   ```  
-3. Open the Jupyter Notebook and run the analysis:  
+   ```
+4. Run the Jupyter Notebook to see the analysis:
    ```bash
-   jupyter notebook heart_disease_analysis.ipynb
-   ```  
+   jupyter notebook
+   ```
 
 ---
 
-## Future Work  
-- Perform feature engineering to improve the quality of insights.  
-- Apply machine learning models to predict heart disease severity.  
-- Investigate other risk factors beyond cholesterol and resting blood pressure.  
+## Acknowledgements
+- Dataset: [Kaggle - Credit Card Fraud Detection](https://www.kaggle.com/mlg-ulb/creditcardfraud)
+- Tools: Python, Pandas, Matplotlib, Seaborn.
 
 ---
 
-## License  
-This project is licensed under the [MIT License](LICENSE).  
-
----
-
-## Acknowledgments  
-Special thanks to [Kaggle](https://www.kaggle.com) for providing the dataset.  
-
----
-
-Feel free to explore, contribute, or reach out with questions!  
-#DataScience #HeartDisease #PythonAnalysis #OpenSource  
-```  
-
-Let me know if you want to customize further! 🚀
+Feel free to contribute or raise issues! 🚀
